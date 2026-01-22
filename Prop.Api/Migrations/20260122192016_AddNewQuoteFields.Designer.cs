@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prop.Api.Persistence;
 
@@ -11,9 +12,11 @@ using Prop.Api.Persistence;
 namespace Prop.Api.Migrations
 {
     [DbContext(typeof(PropDbContext))]
-    partial class PropDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260122192016_AddNewQuoteFields")]
+    partial class AddNewQuoteFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

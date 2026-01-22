@@ -13,9 +13,16 @@ public class QuoteCalculator
 
         if (quote.PropertyYear < 2000)
             basePremium += 100m;
+        else
+        {
+            basePremium -= 50m;
+        }
 
         if (quote.HasSecuritySystem)
             basePremium *= 0.9m;
+
+        if (quote.Client?.Address?.PermanentResidence == true)
+            basePremium *= 1.05m;
 
         return Math.Round(basePremium, 2);
     }

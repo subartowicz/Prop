@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prop.Api.Persistence;
 
@@ -11,9 +12,11 @@ using Prop.Api.Persistence;
 namespace Prop.Api.Migrations
 {
     [DbContext(typeof(PropDbContext))]
-    partial class PropDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260121180601_SplitClientAndAddress")]
+    partial class SplitClientAndAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,10 +45,6 @@ namespace Prop.Api.Migrations
                     b.Property<string>("HomeNumber")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("PermanentResidence")
-                        .HasMaxLength(5)
-                        .HasColumnType("bit");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(20)
@@ -97,22 +96,11 @@ namespace Prop.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ClaimNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("int");
-
                     b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("FlammableFloor")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Floor")
-                        .HasMaxLength(100)
-                        .HasColumnType("int");
 
                     b.Property<bool>("HasSecuritySystem")
                         .HasColumnType("bit");
@@ -125,13 +113,6 @@ namespace Prop.Api.Migrations
 
                     b.Property<int>("PropertyYear")
                         .HasColumnType("int");
-
-                    b.Property<int>("RoomNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("int");
-
-                    b.Property<bool>("TopFloor")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

@@ -1,28 +1,20 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿namespace Prop.Api.DTO;
 
-namespace Prop.Api.Domain;
-
-public class Quote
+public class QuoteDto
 {
     public Guid Id { get; set; }
-
-    // Powiązanie z klientem
-    public Guid ClientId { get; set; }
-    public Client Client { get; set; } = default!;
-
     public decimal PropertyArea { get; set; }
     public int PropertyYear { get; set; }
     public bool HasSecuritySystem { get; set; }
     public decimal Premium { get; set; }
 
     public int RoomNumber { get; set; }
-
     public int ClaimNumber { get; set; }
-
     public int Floor { get; set; }
-
     public bool TopFloor { get; set; }
-
     public bool FlammableFloor { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; }
+
+    public ClientDto Client { get; set; } = default!;
 }
+
